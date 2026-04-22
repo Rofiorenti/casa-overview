@@ -22,6 +22,10 @@ export interface GmailOAuthConfig {
   };
   ios?: {
     client_id: string;
+    client_secret?: string;
+    redirect_uri?: string;
+    auth_endpoint?: string;
+    token_endpoint?: string;
   };
 }
 
@@ -45,6 +49,10 @@ export const GMAIL_OAUTH_CONFIG: GmailOAuthConfig = {
   },
   ios: {
     client_id: clientId,
+    client_secret: clientSecret,
+    redirect_uri: redirectUri,
+    auth_endpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
+    token_endpoint: 'https://oauth2.googleapis.com/token',
   },
 };
 
