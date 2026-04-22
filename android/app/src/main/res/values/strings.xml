@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Casa Overview</string>
+    <string name="title_activity_main">Casa Overview</string>
+    <string name="package_name">com.fiorentini.casaoverview</string>
+    <string name="custom_url_scheme">com.fiorentini.casaoverview</string>
+</resources>
