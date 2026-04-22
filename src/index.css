@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paper & ink — editorial warm palette */
+    --background: 36 30% 95%;          /* warm cream #f5f1ea */
+    --foreground: 220 14% 14%;         /* deep ink */
+    --card: 36 28% 97%;
+    --card-foreground: 220 14% 14%;
+    --primary: 220 14% 14%;            /* ink */
+    --primary-foreground: 36 30% 95%;
+    --secondary: 36 18% 88%;
+    --secondary-foreground: 220 14% 18%;
+    --muted: 36 20% 90%;
+    --muted-foreground: 220 10% 40%;
+    --accent: 18 68% 48%;              /* burnt orange accent */
+    --accent-foreground: 36 30% 96%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 36 30% 95%;
+    --border: 36 16% 82%;
+    --input: 36 16% 82%;
+    --ring: 18 68% 48%;
+    --radius: 0.5rem;
+
+    /* Named brand tokens */
+    --ink: 220 14% 14%;
+    --paper: 36 30% 95%;
+    --clay: 36 18% 88%;
+    --ember: 18 68% 48%;
+  }
+
+  .dark {
+    --background: 220 14% 10%;
+    --foreground: 36 24% 92%;
+    --card: 220 14% 13%;
+    --card-foreground: 36 24% 92%;
+    --primary: 36 24% 92%;
+    --primary-foreground: 220 14% 10%;
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 36 24% 92%;
+    --muted: 220 10% 18%;
+    --muted-foreground: 36 12% 65%;
+    --accent: 18 72% 58%;
+    --accent-foreground: 220 14% 10%;
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 36 24% 92%;
+    --border: 220 10% 22%;
+    --input: 220 10% 22%;
+    --ring: 18 72% 58%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+
+  /* Safe area for iOS notch */
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+  /* Tabular numerals everywhere numbers appear */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* Headlines */
+  .display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 144;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .card-surface {
+    @apply bg-card border border-border/70 rounded-lg;
+  }
+  .hairline {
+    @apply border-b border-border/60;
+  }
+  .num {
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground;
+  }
+  .chip-ember {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-accent/15 text-accent;
+  }
+  .row-hover {
+    @apply transition-colors hover:bg-muted/60;
+  }
+}
+
+/* Scrollbar polish on macOS */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}

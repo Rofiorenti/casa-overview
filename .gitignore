@@ -1,0 +1,34 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Capacitor / Xcode
+ios/App/build/
+ios/App/Pods/
+ios/App/Podfile.lock
+ios/App/App.xcworkspace/xcuserdata/
+ios/App/App.xcodeproj/xcuserdata/
+ios/App/App.xcodeproj/project.xcworkspace/xcuserdata/
+ios/DerivedData/
+
+# Local env
+.env
+.env.local
+
+# Data dumps (locali)
+data/*.csv
+data/*.tmp
+
+# Secrets Python
+scripts/.env
+scripts/__pycache__/
+.env.local
+dist/
+node_modules/
+.env.local
+dist/
+node_modules/
+.env.local
+dist/
+node_modules/
