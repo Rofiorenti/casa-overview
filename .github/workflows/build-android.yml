@@ -1,0 +1,49 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+env:
+  VITE_GMAIL_CLIENT_ID: ${{ secrets.VITE_GMAIL_CLIENT_ID }}
+  VITE_GMAIL_CLIENT_SECRET: ${{ secrets.VITE_GMAIL_CLIENT_SECRET }}
+  VITE_GMAIL_REDIRECT_URI: ${{ secrets.VITE_GMAIL_REDIRECT_URI }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build web
+        run: npm run build
+      
+      - name: Sync Capacitor
+        run: npx cap sync android
+      
+      - name: Build APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+EOF
